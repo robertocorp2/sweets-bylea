@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { galleryItems, site } from '../data/site';
+
+const filters = [
+  { id: 'all', label: 'All' },
+  { id: 'weddings', label: 'Weddings' },
+  { id: 'birthdays', label: 'Birthdays' },
+  { id: 'holiday', label: 'Holiday Specials' },
+];
+---
+
+<BaseLayout
+  title={`Gallery | ${site.shortName}'s Bakehouse`}
+  description="Browse Leanna's portfolio of custom wedding cakes, birthday cakes, and holiday specials."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Portfolio</span>
+      <h1>The Gallery</h1>
+      <p>
+        A few favorites from recent weddings, birthdays, and holiday tables. Every
+        cake here was made to order.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="gallery-filter" role="tablist" aria-label="Filter gallery">
+        {
+          filters.map((f, i) => (
+            <button
+              type="button"
+              role="tab"
+              class={`filter-tab${i === 0 ? ' is-active' : ''}`}
+              data-filter={f.id}
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {f.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="masonry" id="gallery-grid">
+        {
+          galleryItems.map((item) => (
+            <figure class="masonry-item" data-category={item.category}>
+              <img src={item.image} alt={item.alt} loading="lazy" />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <span class="script" style="font-size: 2rem;">Your celebration next</span>
+        <h2>Let's create something memorable</h2>
+        <p>Share your vision and we will design a dessert around it.</p>
+        <a href="/contact/" class="btn btn-primary">Order Now</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

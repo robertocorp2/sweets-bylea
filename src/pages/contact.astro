@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: `Order & Contact | ${site.name}`,
+};
+
+const hours = [
+  { day: 'Tuesday - Friday', time: '9:00 AM - 5:00 PM' },
+  { day: 'Saturday', time: '9:00 AM - 2:00 PM' },
+  { day: 'Sunday - Monday', time: 'Closed (baking for events)' },
+];
+---
+
+<BaseLayout
+  title={`Order & Contact | ${site.shortName}'s Bakehouse`}
+  description="Order custom cakes, cookies, and cupcakes from Leanna. Share your dream dessert and we will bring it to life."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Order & contact</span>
+      <h1>Let's plan your dessert</h1>
+      <p>
+        Tell us what you are dreaming up. Leanna will reply within one business day
+        to confirm details and pricing.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="lead-time reveal">
+        <span class="icon"><Icon name="clock" size={22} /></span>
+        <div>
+          <strong>Please allow {site.leadTime} for all custom orders.</strong>
+          <span>Larger cakes and busy seasons may need a little longer.</span>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <form class="form" id="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+              <p class="error">Please enter your name.</p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+              <p class="error">Please enter a valid email address.</p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              <p class="helper">Optional, for quick order confirmations.</p>
+            </div>
+            <div class="field">
+              <label for="event-date">Event date</label>
+              <input id="event-date" name="event-date" type="date" />
+              <p class="helper">Your event or pickup date, if you have one.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Describe your dream dessert</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="For example: a three-tier vanilla cake with raspberry filling for a June wedding."
+              required
+            ></textarea>
+            <p class="error">Please tell us a little about your order.</p>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send my order request</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+
+        <aside class="contact-side">
+          <div class="contact-card">
+            <h3>Contact Leanna</h3>
+            <div class="contact-line">
+              <span class="icon"><Icon name="mail" size={19} /></span>
+              <div>
+                <strong>Email</strong>
+                <span><a href={`mailto:${site.email}`}>{site.email}</a></span>
+              </div>
+            </div>
+            <div class="contact-line">
+              <span class="icon"><Icon name="phone" size={19} /></span>
+              <div>
+                <strong>Phone</strong>
+                <span><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></span>
+              </div>
+            </div>
+            <div class="contact-line">
+              <span class="icon"><Icon name="instagram" size={19} /></span>
+              <div>
+                <strong>Instagram</strong>
+                <span>
+                  <a href={site.instagram} target="_blank" rel="noopener">{site.instagramHandle}</a>
+                </span>
+              </div>
+            </div>
+            <div class="contact-line">
+              <span class="icon"><Icon name="map-pin" size={19} /></span>
+              <div>
+                <strong>Pickup studio</strong>
+                <span>Local pickup by appointment. Address shared with your order confirmation.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Hours</h3>
+            <ul class="hours-list">
+              {hours.map((h) => (
+                <li>
+                  <span>{h.day}</span>
+                  <strong>{h.time}</strong>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>

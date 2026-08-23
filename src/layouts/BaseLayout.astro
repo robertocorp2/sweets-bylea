@@ -1,0 +1,81 @@
+---
+import '@fontsource/outfit/300.css';
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/500.css';
+import '@fontsource/outfit/600.css';
+import '@fontsource/outfit/700.css';
+import '@fontsource/great-vibes/400.css';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = site.metaTitle,
+  description = site.metaDescription,
+  ogImage = 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=1200&q=80&auto=format&fit=crop',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content="#fdfbf7" />
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- newsletter popup -->
+    <div class="popup-backdrop" id="newsletter-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
+      <div class="popup">
+        <button class="close" id="popup-close" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <span class="script">A little something sweet</span>
+        <h3 id="popup-title">Take 10% off your first order</h3>
+        <p>Join the bakehouse list and we will send your welcome code straight to your inbox.</p>
+        <form data-newsletter novalidate>
+          <label class="visually-hidden" for="popup-email">Email address</label>
+          <input id="popup-email" type="email" name="email" placeholder="Your email address" required />
+          <button type="submit" class="btn btn-primary">Claim my 10% off</button>
+          <span class="form-note" data-form-note hidden></span>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      import '../scripts/site.js';
+    </script>
+  </body>
+</html>

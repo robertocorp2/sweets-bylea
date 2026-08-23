@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { ingredients, media, processSteps, site } from '../data/site';
+
+const ingredientIcons = ['egg', 'butter', 'chocolate'];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: `About ${site.name}`,
+  mainEntity: {
+    '@type': 'Person',
+    name: site.shortName,
+    jobTitle: 'Baker & Owner',
+    worksFor: { '@type': 'Bakery', name: site.name },
+  },
+};
+---
+
+<BaseLayout
+  title={`About Leanna | ${site.shortName}'s Bakehouse`}
+  description="Meet Leanna Corporan, the baker behind the bakehouse. A story of family recipes, real ingredients, and cakes made with love."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">The baker behind the bakehouse</span>
+      <h1>About Leanna</h1>
+      <p>
+        A kitchen story about family recipes, real ingredients, and desserts made
+        from scratch.
+      </p>
+    </div>
+  </section>
+
+  <!-- the why -->
+  <section class="section">
+    <div class="container about-grid">
+      <div class="media reveal">
+        <img src={media.story} alt={media.storyAlt} loading="lazy" />
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">The why</span>
+        <h2>It started with her <span class="script">grandmother's</span> recipes</h2>
+        <p>
+          Inspired by her grandmother's handwritten recipe cards, Leanna started
+          baking as a way to feel close to home. During the quiet of 2020, that
+          comfort became a calling, and a small batch of cupcakes for neighbors
+          turned into a waitlist.
+        </p>
+        <p>
+          Today she bakes bespoke cakes, cookies, and cake pops for weddings,
+          birthdays, and every milestone in between. Every order is still mixed,
+          baked, and finished by hand, exactly the way she was taught.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ingredients -->
+  <section class="section ingredients">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The ingredients</span>
+        <h2>Only the good stuff</h2>
+      </div>
+      <div class="ingredients-grid">
+        {
+          ingredients.map((ing, i) => (
+            <div class="ingredient-card reveal">
+              <span class="ingredient-icon">
+                <Icon name={ingredientIcons[i]} size={24} />
+              </span>
+              <h3>{ing.title}</h3>
+              <p>{ing.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- process -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The process</span>
+        <h2>From batter to masterpiece</h2>
+      </div>
+      <div class="process-grid">
+        {
+          processSteps.map((step, i) => (
+            <div class="process-step reveal">
+              <div class="media">
+                <img src={step.image} alt={step.alt} loading="lazy" />
+              </div>
+              <span class="num">0{i + 1}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- cta -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <span class="script" style="font-size: 2rem;">Taste the difference</span>
+        <h2>Place your order today</h2>
+        <p>Real ingredients, made to order, and finished by hand.</p>
+        <a href="/contact/" class="btn btn-primary">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>

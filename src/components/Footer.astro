@@ -1,0 +1,72 @@
+---
+import Icon from './Icon.astro';
+import { nav, site } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="newsletter">
+      <div>
+        <h4>Get 10% off your first order</h4>
+        <p>Join the bakehouse list for seasonal menus, early access to holiday boxes, and a little sweetness in your inbox.</p>
+      </div>
+      <form class="newsletter-form" data-newsletter novalidate>
+        <label class="visually-hidden" for="footer-email">Email address</label>
+        <input id="footer-email" type="email" name="email" placeholder="Your email address" required />
+        <button type="submit" class="btn">Subscribe</button>
+        <span class="form-note" data-form-note hidden></span>
+      </form>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brand">
+          <span class="brand-mark"><span class="script" aria-hidden="true">L</span></span>
+          <span class="brand-text">
+            <span class="brand-script">Leanna Corporan</span>
+            <span class="brand-sub">Bakehouse</span>
+          </span>
+        </a>
+        <p>{site.tagline} Small-batch desserts made from real ingredients, baked to order.</p>
+        <div class="social-row">
+          <a href={site.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+            <Icon name="instagram" />
+          </a>
+          <a href="https://facebook.com/leannacorporan" target="_blank" rel="noopener" aria-label="Facebook">
+            <Icon name="facebook" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></li>
+          <li><a href={site.instagram} target="_blank" rel="noopener">{site.instagramHandle}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ordering</h4>
+        <ul>
+          <li>Custom orders need {site.leadTime}.</li>
+          <li>Local pickup available.</li>
+          <li>Delivery on request.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+      <span>Handcrafted with love, baked by Leanna.</span>
+    </div>
+  </div>
+</footer>

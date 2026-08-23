@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { categories, products, site } from '../data/site';
+
+const catLabels = {
+  cupcakes: 'Cupcakes',
+  cookies: 'Cookies',
+  'cake-pops': 'Cake Pops',
+  cakes: 'Custom Cakes',
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Menu',
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: p.name,
+      description: p.description,
+      image: p.image,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={`Menu & Shop | ${site.shortName}'s Bakehouse`}
+  description="Explore Leanna's custom cupcakes, gourmet cookies, cake pops, and bespoke celebration cakes. Build your own custom cake online."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Made to order</span>
+      <h1>The Menu</h1>
+      <p>
+        Every bake is made fresh once you order. Browse the favorites below, then
+        design your own custom cake.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="filter-tabs" role="tablist" aria-label="Filter products">
+        {
+          categories.map((cat, i) => (
+            <button
+              type="button"
+              role="tab"
+              class={`filter-tab${i === 0 ? ' is-active' : ''}`}
+              data-filter={cat.id}
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {cat.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        {
+          products.map((p) => (
+            <article class="product-card" data-category={p.category}>
+              <div class="product-media">
+                <img src={p.image} alt={p.alt} loading="lazy" />
+              </div>
+              <div class="product-info">
+                <span class="tag">{catLabels[p.category]}</span>
+                <h3>{p.name}</h3>
+                <p>{p.description}</p>
+                <div class="product-row">
+                  <span class="price">{p.price}</span>
+                  <button
+                    type="button"
+                    class="btn-arrow"
+                    data-quickview
+                    data-id={p.id}
+                    data-name={p.name}
+                    data-desc={p.description}
+                    data-price={p.price}
+                    data-pricenote={p.priceNote}
+                    data-image={p.image}
+                    data-alt={p.alt}
+                    data-cat={catLabels[p.category]}
+                  >
+                    Quick view <Icon name="arrow-right" size={18} />
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- custom cake builder -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Design it yourself</span>
+        <h2>Build your custom cake</h2>
+        <p class="lede" style="margin-inline:auto;text-align:center;">
+          Choose a size, flavor, and filling. We will take it from there.
+        </p>
+      </div>
+
+      <div class="builder" id="cake-builder">
+        <div class="builder-grid">
+          <div class="builder-steps">
+            <div class="builder-step">
+              <h4>Size</h4>
+              <div class="option-row" data-group="size">
+                <button type="button" class="option-pill is-active" data-value="6">6 inch</button>
+                <button type="button" class="option-pill" data-value="8">8 inch</button>
+                <button type="button" class="option-pill" data-value="10">10 inch</button>
+              </div>
+            </div>
+            <div class="builder-step">
+              <h4>Flavor</h4>
+              <div class="option-row" data-group="flavor">
+                <button type="button" class="option-pill is-active" data-value="vanilla">Vanilla</button>
+                <button type="button" class="option-pill" data-value="chocolate">Chocolate</button>
+                <button type="button" class="option-pill" data-value="red-velvet">Red Velvet</button>
+              </div>
+            </div>
+            <div class="builder-step">
+              <h4>Filling</h4>
+              <div class="option-row" data-group="filling">
+                <button type="button" class="option-pill is-active" data-value="raspberry">Raspberry</button>
+                <button type="button" class="option-pill" data-value="caramel">Caramel</button>
+                <button type="button" class="option-pill" data-value="cream-cheese">Cream Cheese</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="builder-summary" aria-live="polite">
+            <h3>Your cake</h3>
+            <div class="summary-lines">
+              <div class="summary-line"><span>Size</span><span data-summary="size">6 inch</span></div>
+              <div class="summary-line"><span>Flavor</span><span data-summary="flavor">Vanilla</span></div>
+              <div class="summary-line"><span>Filling</span><span data-summary="filling">Raspberry</span></div>
+            </div>
+            <div class="builder-price">
+              <span>Estimated from</span>
+              <span class="amount" data-summary="price">$85</span>
+            </div>
+            <a href="/contact/" class="btn btn-primary" id="builder-cta">Add to order</a>
+            <p class="form-note" style="color: var(--ink-soft);">
+              Final pricing confirmed after a quick chat with Leanna.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- quick view modal -->
+  <div
+    class="quickview-backdrop"
+    id="quickview"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="qv-name"
+    aria-hidden="true"
+  >
+    <div class="quickview">
+      <button class="close" id="quickview-close" aria-label="Close">
+        <Icon name="close" size={20} />
+      </button>
+      <div class="quickview-media">
+        <img id="qv-image" src="" alt="" />
+      </div>
+      <div class="quickview-body">
+        <span class="tag" id="qv-tag"></span>
+        <h3 id="qv-name"></h3>
+        <p id="qv-desc"></p>
+        <span class="quickview-price" id="qv-price"></span>
+        <div class="quickview-cta">
+          <a href="/contact/" class="btn btn-primary" id="qv-order">Order this</a>
+          <button type="button" class="btn btn-secondary" id="quickview-close2">Keep browsing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
