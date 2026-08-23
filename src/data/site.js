@@ -113,10 +113,10 @@ export const copy = {
 };
 
 const serviceMedia = {
-  cakes: { image: '/media/new-cake-two-tier.jpg', alt: 'Two-tier celebration cake with piped buttercream' },
-  cupcakes: { image: '/media/new-cupcakes-blue-cream.jpg', alt: 'Blue and cream decorated cupcakes in a gift box' },
-  events: { image: '/media/new-strawberries-chocolate-tray.jpg', alt: 'Chocolate-covered strawberries prepared for gifting' },
-  consultations: { image: '/media/new-cake-ribbon-poster.jpg', alt: 'Ribbon cake from Lea’s baking video' },
+  cakes: { image: '/media/service-cakes-premium.jpg', alt: 'Two-tier ivory celebration cake with blush ribbons and buttercream flowers' },
+  cupcakes: { image: '/media/service-cupcakes-premium.jpg', alt: 'Premium assortment of floral cupcakes in cream, blush, caramel, and pale blue' },
+  events: { image: '/media/service-events-premium.jpg', alt: 'Coordinated event spread with floral cupcakes, dessert cups, and chocolate-covered strawberries' },
+  consultations: { image: '/media/service-consultations-premium.jpg', alt: 'Baking consultation workspace with piping tools, blank notebook, and decorated cupcakes' },
 };
 
 export const services = {
