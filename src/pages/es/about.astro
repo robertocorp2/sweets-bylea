@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { copy, media, site } from '../../data/site';
+
+const t = copy.es;
+const process = [
+  { title: 'Imagina', body: 'Comparte la ocasión, los colores, sabores y detalles que son importantes para ti.', image: '/media/08a-hearts-1.jpg', alt: 'Gift box of decorated strawberries tied with ribbon' },
+  { title: 'Creamos', body: 'Lea une la idea con detalles pensados y un toque personal.', image: '/media/07b-coquet-2.jpg', alt: 'Close view of a custom cake with pink ribbons' },
+  { title: 'Celebra', body: 'Disfruta un dulce hecho para llevar alegría a tu gente.', image: '/media/05c-strawberries-3.jpg', alt: 'Chocolate-covered strawberries with sprinkles' },
+];
+---
+
+<BaseLayout locale="es" alternatePath="/es/about/" title={`Sobre Lea | ${site.name}`} description="Conoce a Lea, la repostera detrás de SweetsByLea, donde se unen la fe, el cuidado y los postres hechos a mano.">
+  <section class="page-hero"><div class="container"><span class="eyebrow">El corazón detrás de los dulces</span><h1>Sobre Lea</h1><p>Fe, creatividad y mucho amor en cada detalle.</p></div></section>
+  <section class="section"><div class="container about-grid"><div class="media reveal"><video src="/media/11-baking-vlog.mp4" poster={media.story} muted loop playsinline controls preload="metadata" aria-label={media.storyAlt}></video></div><div class="about-copy reveal"><span class="eyebrow">{t.aboutEyebrow}</span><h2>{t.aboutTitle}</h2>{t.aboutBody.map((paragraph) => <p>{paragraph}</p>)}<p>SweetsByLea es un espacio para pedidos personalizados, postres para eventos y ánimo para aprender repostería con fe.</p><div class="story-meta"><Icon name="heart" size={20} /> {site.taglineEs}</div></div></div></section>
+  <section class="section ingredients"><div class="container"><div class="section-head"><span class="eyebrow">La forma SweetsByLea</span><h2>Hecho con intención.</h2></div><div class="ingredients-grid"><div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="heart" size={24} /></span><h3>Hecho con amor</h3><p>Cada creación se prepara con cuidado para las personas y los momentos que celebra.</p></div><div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="sparkles" size={24} /></span><h3>Detalles personales</h3><p>Tus colores, tema, sabores e historia ayudan a crear un dulce verdaderamente tuyo.</p></div><div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="leaf" size={24} /></span><h3>Inspirado en la fe</h3><p>La fe cristiana de Lea guía el ánimo y la calidez detrás del negocio.</p></div></div></div></section>
+  <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">El proceso</span><h2>De la idea a la celebración.</h2></div><div class="process-grid">{process.map((step, index) => <div class="process-step reveal"><div class="media"><img src={step.image} alt={step.alt} loading="lazy" /></div><span class="num">0{index + 1}</span><h3>{step.title}</h3><p>{step.body}</p></div>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">Prueba la diferencia</span><h2>Hagamos dulce tu momento.</h2><p>Comparte tu idea y Lea te ayudará a hacerla realidad.</p><a href="/es/contact/" class="btn btn-primary">Comenzar un pedido</a></div></div></section>
+</BaseLayout>

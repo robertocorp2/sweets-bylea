@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { services, site } from '../../data/site';
+
+export function getStaticPaths() {
+  return services.en.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props;
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: service.summary, provider: { '@type': 'Bakery', name: site.name } };
+---
+
+<BaseLayout locale="en" alternatePath={`/services/${service.slug}/`} title={`${service.title} | ${site.name}`} description={service.summary} ogImage={`${site.siteUrl}${service.image}`}>
+  <section class="page-hero"><div class="container"><span class="eyebrow">{service.cardTitle}</span><h1>{service.title}</h1><p>{service.summary}</p></div></section>
+  <section class="section"><div class="container about-grid"><div class="media reveal"><img src={service.image} alt={service.alt} /></div><div class="about-copy reveal"><span class="eyebrow">A more personal way to celebrate</span><h2>Made thoughtfully for your moment.</h2>{service.body.map((paragraph) => <p>{paragraph}</p>)}<a href={`/contact/?service=${encodeURIComponent(service.title)}`} class="btn btn-primary">Start planning <Icon name="arrow-right" size={18} /></a></div></div></section>
+  <section class="section ingredients"><div class="container"><div class="section-head"><span class="eyebrow">Ideal for</span><h2>Made for meaningful celebrations.</h2></div><div class="ingredients-grid">{service.idealFor.map((item) => <div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="heart" size={24} /></span><h3>{item}</h3><p>Thoughtful details, made with care.</p></div>)}</div></div></section>
+  <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">How it works</span><h2>From idea to finished sweet.</h2></div><div class="process-grid service-steps">{service.steps.map((step, index) => <div class="process-step reveal"><span class="num">0{index + 1}</span><h3>{step}</h3><p>Lea will guide the details with you.</p></div>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">Let’s make it special</span><h2>Ready to start planning?</h2><p>Share your vision and Lea will help you choose the sweetest next step.</p><a href={`/contact/?service=${encodeURIComponent(service.title)}`} class="btn btn-primary">Tell Lea about it</a></div></div></section>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>

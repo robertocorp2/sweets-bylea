@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import { services, site } from '../../../data/site';
+
+const items = services.es;
+---
+
+<BaseLayout locale="es" alternatePath="/es/services/" title={`Servicios | ${site.name}`} description="Explora los pasteles personalizados, cupcakes, postres para eventos y consultas de repostería de SweetsByLea.">
+  <section class="page-hero"><div class="container"><span class="eyebrow">Hecho para tu momento</span><h1>Formas dulces de celebrar</h1><p>Elige un servicio y creemos algo especial juntos.</p></div></section>
+  <section class="section-tight"><div class="container"><div class="product-grid service-grid">{items.map((service) => <article class="product-card reveal"><div class="product-media"><img src={service.image} alt={service.alt} loading="lazy" /></div><div class="product-info"><span class="tag">{service.cardTitle}</span><h3>{service.title}</h3><p>{service.summary}</p><a href={`/es/services/${service.slug}/`} class="btn-arrow">Conocer este servicio <Icon name="arrow-right" size={18} /></a></div></article>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">¿Tienes algo especial en mente?</span><h2>Cuéntale a Lea lo que imaginas.</h2><p>Cada pedido comienza con una conversación.</p><a href="/es/contact/" class="btn btn-primary">Comenzar un pedido</a></div></div></section>
+</BaseLayout>

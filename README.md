@@ -1,20 +1,20 @@
-# Leanna Corporan's Bakehouse
+# SweetsByLea
 
-A premium, mobile-first marketing site for a custom bakery. Built with [Astro](https://astro.build), deployed to Cloudflare Pages, with automatic deploys from GitHub Actions.
+A bilingual, mobile-first marketing site for SweetsByLea. Built with [Astro](https://astro.build), deployed to Cloudflare Pages.
 
 ## Pages
 
-- **Home** — hero, story, best sellers, testimonials, Instagram grid
-- **Menu** — category filters, product quick-view, custom cake builder
-- **About** — story, ingredients, process
-- **Gallery** — filterable masonry portfolio
-- **Contact** — order form with lead-time notice and hours
+- **Home** — hero, Lea’s story, services, media, and WhatsApp CTA
+- **Services** — custom cakes, cupcakes, event desserts, and baking consultations
+- **About** — faith-centered story and process
+- **Gallery** — filterable local photos and videos
+- **Contact** — localized inquiry form that opens WhatsApp
 
 ## Stack
 
 - Astro (static output), vanilla CSS design system, vanilla JS interactions
 - Self-hosted fonts via Fontsource (Outfit + Great Vibes)
-- Photography via the Unsplash CDN
+- Local SweetsByLea photography and video media
 
 ## Local development
 
@@ -45,9 +45,6 @@ The deploy workflow reads these GitHub Actions secrets:
 
 ## Customizing content
 
-- Brand, contact info, products, testimonials, and gallery: `src/data/site.js`
+- Brand, localized copy, services, contact info, and gallery: `src/data/site.js`
 - Colors and typography tokens: `src/styles/global.css` (`:root`)
 - Site domain (for canonical URLs): `astro.config.mjs` (`site`)
-
-Before launch, update the placeholder contact details (email, phone, Instagram
-handle) and the pickup address in `src/data/site.js` and `src/pages/contact.astro`.

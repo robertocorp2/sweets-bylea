@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://leanna-bakehouse.pages.dev',
+  site: 'https://sweets-bylea.pages.dev',
   output: 'static',
   compressHTML: true,
   build: {

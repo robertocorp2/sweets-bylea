@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { copy, galleryFilters, galleryItems, site } from '../../data/site';
+
+const t = copy.es;
+---
+
+<BaseLayout locale="es" alternatePath="/es/gallery/" title={`Galería | ${site.name}`} description="Mira pasteles, cupcakes, fresas y videos reales de SweetsByLea.">
+  <section class="page-hero"><div class="container"><span class="eyebrow">Portafolio</span><h1>La Galería</h1><p>Creaciones reales de SweetsByLea, hechas para celebrar, regalar y compartir alegría.</p></div></section>
+  <section class="section-tight"><div class="container"><div class="gallery-filter" role="tablist" aria-label="Filtrar galería">{galleryFilters.es.map((filter, index) => <button type="button" role="tab" class={`filter-tab${index === 0 ? ' is-active' : ''}`} data-filter={filter.id} aria-selected={index === 0 ? 'true' : 'false'}>{filter.label}</button>)}</div><div class="masonry" id="gallery-grid">{galleryItems.map((item) => <figure class="masonry-item" data-category={item.category}>{item.kind === 'video' ? <video src={item.image} poster={item.poster} controls preload="metadata" aria-label={item.alt}></video> : <img src={item.image} alt={item.alt} loading="lazy" />}</figure>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">{t.ctaEyebrow}</span><h2>{t.ctaTitle}</h2><p>{t.ctaBody}</p><a href="/es/contact/" class="btn btn-primary">{t.contactLink}</a></div></div></section>
+</BaseLayout>

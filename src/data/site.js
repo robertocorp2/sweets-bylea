@@ -1,287 +1,218 @@
-// Central content + media for Leanna Corporan's Bakehouse.
-// All photography is served from Unsplash's CDN (images.unsplash.com).
+// Verified SweetsByLea content and local media.
 
 export const site = {
-  name: "Leanna Corporan's Bakehouse",
-  shortName: 'Leanna Corporan',
-  tagline: 'Handcrafted with love. Baked by Leanna.',
-  metaTitle: "Leanna Corporan's Bakehouse | Custom Cakes, Cookies & Cupcakes",
+  name: 'SweetsByLea',
+  shortName: 'SweetsByLea',
+  tagline: 'Sweets with a touch of faith',
+  taglineEs: 'Dulces con un toque de fe',
+  metaTitle: 'SweetsByLea | Sweets with a touch of faith',
   metaDescription:
-    'Leanna Corporan creates exquisite custom cakes, cookies, cake pops, and cupcakes for weddings, birthdays, and events. Order your bespoke dessert today.',
-  email: 'hello@leannacorporan.com',
-  phone: '(555) 012-3456',
-  instagram: 'https://instagram.com/leannacorporan',
-  instagramHandle: '@leannacorporan',
-  leadTime: '48-72 hours',
-  city: 'Your Town',
+    'Handcrafted cakes, cupcakes, strawberries, and desserts made with love and faith for your sweetest celebrations.',
+  email: 'Leannacorporan@icloud.com',
+  phone: '+1 908-943-1344',
+  phoneDisplay: '908-943-1344',
+  whatsapp: 'https://wa.me/19089431344',
+  instagram: 'https://instagram.com/sweets_bylea',
+  instagramHandle: '@sweets_bylea',
+  logo: '/media/profile-lea.jpg',
+  siteUrl: 'https://sweets-bylea.pages.dev',
 };
 
-export const nav = [
-  { label: 'Home', href: '/' },
-  { label: 'Menu', href: '/menu/' },
-  { label: 'About', href: '/about/' },
-  { label: 'Gallery', href: '/gallery/' },
-  { label: 'Contact', href: '/contact/' },
-];
+export const locales = {
+  en: { label: 'English', short: 'EN' },
+  es: { label: 'Español', short: 'ES' },
+};
 
-// Build an Unsplash CDN URL at a given width.
-export const unsplash = (id, w = 900) =>
-  `https://images.unsplash.com/${id}?w=${w}&q=80&auto=format&fit=crop`;
+export const localize = (locale, path = '/') => {
+  if (locale === 'es') return path === '/' ? '/es/' : `/es${path}`;
+  return path;
+};
+
+export const nav = {
+  en: [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services/' },
+    { label: 'About', href: '/about/' },
+    { label: 'Gallery', href: '/gallery/' },
+    { label: 'Contact', href: '/contact/' },
+  ],
+  es: [
+    { label: 'Inicio', href: '/es/' },
+    { label: 'Servicios', href: '/es/services/' },
+    { label: 'Sobre Mí', href: '/es/about/' },
+    { label: 'Galería', href: '/es/gallery/' },
+    { label: 'Contacto', href: '/es/contact/' },
+  ],
+};
 
 export const media = {
-  hero: unsplash('photo-1576618148400-f54bed99fcfd', 1800),
-  heroAlt: 'A tray of freshly frosted cupcakes with swirled buttercream',
-  story: unsplash('photo-1556910103-1c02745aae4d', 1000),
-  storyAlt: 'Leanna working dough in her sunlit kitchen',
-  aboutHero: unsplash('photo-1517248135467-4c7edcad34c4', 1600),
-  aboutHeroAlt: 'Warm, inviting bakery counter filled with fresh pastries',
-  ingredients: unsplash('photo-1517433670267-08bbd4be890f', 1000),
-  ingredientsAlt: 'Freshly baked artisan loaves',
+  hero: '/media/07a-coquet-1.jpg',
+  heroAlt: 'Custom celebration cake decorated with pink ribbons and hearts',
+  story: '/media/11-baking-vlog-poster.jpg',
+  storyAlt: 'A glimpse into Lea’s baking vlog',
+  logo: site.logo,
 };
 
-export const bestSellers = [
-  {
-    name: 'Signature Vanilla Bean Cupcake',
-    description: 'Madagascar vanilla sponge with silky vanilla bean buttercream.',
-    price: '$4.50',
-    image: unsplash('photo-1486427944299-d1955d23e34d', 800),
-    alt: 'A vanilla bean cupcake with swirled buttercream',
+export const copy = {
+  en: {
+    heroEyebrow: 'Handcrafted with love and faith',
+    heroTitle: ['Sweets with a touch of', 'faith.'],
+    heroBody:
+      'Thoughtful cakes, cupcakes, strawberries, and special-event desserts made to bring joy to your sweetest moments.',
+    order: 'Start an order',
+    explore: 'Explore services',
+    marquee: ['Custom cakes', 'Cupcakes', 'Event desserts', 'Strawberries', 'Faith & joy'],
+    aboutEyebrow: 'Meet Lea',
+    aboutTitle: 'Every sweet is made with love.',
+    aboutBody: [
+      'Hi, I’m Lea, the heart behind SweetsByLea. I pour my passion for baking into every creation so it can taste wonderful and bring joy to your special occasion.',
+      'As a Christian baker, my faith inspires the way I serve: with care, encouragement, and a touch of sweetness in every detail.',
+    ],
+    aboutLink: 'Read Lea’s story',
+    servicesEyebrow: 'Made for your moment',
+    servicesTitle: 'Sweet ways to celebrate',
+    servicesBody: 'Choose a service and let’s create something meaningful together.',
+    mediaEyebrow: 'From Lea’s kitchen',
+    mediaTitle: 'Real bakes. Real joy.',
+    mediaBody: 'Follow along for behind-the-scenes baking, seasonal drops, and recent creations.',
+    galleryLink: 'See the gallery',
+    ctaEyebrow: 'Your celebration next',
+    ctaTitle: 'Let’s create something sweet.',
+    ctaBody: 'Share your vision and Lea will help bring it to life.',
+    contactLink: 'Tell me about your order',
+    footerLine: 'Handcrafted desserts made with love, faith, and care.',
   },
-  {
-    name: 'Brown Butter Chocolate Chip Cookie',
-    description: 'Nutty brown butter, pools of dark chocolate, flaky sea salt.',
-    price: '$3.75',
-    image: unsplash('photo-1499636136210-6f4ee915583e', 800),
-    alt: 'Stacked chocolate chip cookies with melted chocolate',
+  es: {
+    heroEyebrow: 'Hecho a mano con amor y fe',
+    heroTitle: ['Dulces con un toque de', 'fe.'],
+    heroBody:
+      'Pasteles, cupcakes, fresas cubiertas de chocolate y postres para eventos preparados para llenar de alegría tus momentos más dulces.',
+    order: 'Comenzar un pedido',
+    explore: 'Ver servicios',
+    marquee: ['Pasteles personalizados', 'Cupcakes', 'Postres para eventos', 'Fresas', 'Fe y alegría'],
+    aboutEyebrow: 'Conoce a Lea',
+    aboutTitle: 'Cada dulce está hecho con amor.',
+    aboutBody: [
+      'Hola, soy Lea, el corazón detrás de SweetsByLea. Pongo mi pasión por la repostería en cada creación para que sepa deliciosa y lleve alegría a tus ocasiones especiales.',
+      'Como repostera cristiana, mi fe inspira la forma en que sirvo: con cuidado, ánimo y un toque de dulzura en cada detalle.',
+    ],
+    aboutLink: 'Conoce la historia de Lea',
+    servicesEyebrow: 'Hecho para tu momento',
+    servicesTitle: 'Formas dulces de celebrar',
+    servicesBody: 'Elige un servicio y creemos algo especial juntos.',
+    mediaEyebrow: 'Desde la cocina de Lea',
+    mediaTitle: 'Dulces reales. Alegría real.',
+    mediaBody: 'Acompáñanos para ver el proceso, los lanzamientos de temporada y las creaciones recientes.',
+    galleryLink: 'Ver la galería',
+    ctaEyebrow: 'Tu celebración sigue',
+    ctaTitle: 'Creemos algo dulce.',
+    ctaBody: 'Comparte tu idea y Lea te ayudará a hacerla realidad.',
+    contactLink: 'Cuéntame sobre tu pedido',
+    footerLine: 'Postres hechos a mano con amor, fe y cuidado.',
   },
-  {
-    name: 'Classic Red Velvet Cake Pop',
-    description: 'Cream cheese center dipped in white chocolate.',
-    price: '$4.25',
-    image: unsplash('photo-1587314168485-3236d6710814', 800),
-    alt: 'Chocolate cake pops finished with a glossy shell',
-  },
-  {
-    name: 'Custom Celebration Cake',
-    description: 'Your flavors, your story. Bespoke tiers from 6 to 10 inches.',
-    price: 'From $85',
-    image: unsplash('photo-1542124948-dc391252a940', 800),
-    alt: 'An elegant custom celebration cake',
-  },
-];
+};
 
-export const products = [
-  // Cupcakes
-  {
-    id: 'vanilla-bean-cupcake',
-    name: 'Signature Vanilla Bean Cupcake',
-    category: 'cupcakes',
-    description:
-      'Madagascar vanilla sponge, silky vanilla bean buttercream, and a whisper of sea salt.',
-    price: '$4.50',
-    priceNote: 'per cupcake',
-    image: unsplash('photo-1486427944299-d1955d23e34d', 800),
-    alt: 'A vanilla bean cupcake with swirled buttercream',
-  },
-  {
-    id: 'double-chocolate-cupcake',
-    name: 'Double Chocolate Fudge Cupcake',
-    category: 'cupcakes',
-    description:
-      'Dutch cocoa sponge with a molten bittersweet fudge center and glossy ganache.',
-    price: '$4.75',
-    priceNote: 'per cupcake',
-    image: unsplash('photo-1563729784474-d77dbb933a9e', 800),
-    alt: 'A chocolate cupcake topped with fudge',
-  },
-  {
-    id: 'red-velvet-cupcake',
-    name: 'Red Velvet Cream Cheese',
-    category: 'cupcakes',
-    description: 'Classic red velvet sponge crowned with tangy cream cheese frosting.',
-    price: '$4.75',
-    priceNote: 'per cupcake',
-    image: unsplash('photo-1550617931-e17a7b70dce2', 800),
-    alt: 'A red velvet cupcake with cream cheese frosting',
-  },
-  {
-    id: 'lemon-raspberry-cupcake',
-    name: 'Lemon Raspberry',
-    category: 'cupcakes',
-    description: 'Zesty lemon sponge, raspberry buttercream, and candied lemon zest.',
-    price: '$4.75',
-    priceNote: 'per cupcake',
-    image: unsplash('photo-1621303837174-89787a7d4729', 800),
-    alt: 'Frosted cupcakes decorated with fresh fruit',
-  },
-  // Cookies
-  {
-    id: 'brown-butter-cookie',
-    name: 'Brown Butter Chocolate Chip',
-    category: 'cookies',
-    description:
-      'Nutty brown butter and pools of dark chocolate finished with flaky sea salt.',
-    price: '$3.75',
-    priceNote: 'each',
-    image: unsplash('photo-1499636136210-6f4ee915583e', 800),
-    alt: 'Stacked chocolate chip cookies',
-  },
-  {
-    id: 'caramel-pretzel-cookie',
-    name: 'Salted Caramel Pretzel',
-    category: 'cookies',
-    description: 'Chewy caramel, crushed pretzel, and a dark chocolate drizzle.',
-    price: '$4.00',
-    priceNote: 'each',
-    image: unsplash('photo-1558961363-fa8fdf82db35', 800),
-    alt: 'Cookies topped with caramel and chocolate',
-  },
-  {
-    id: 'double-chocolate-cookie',
-    name: 'Double Chocolate Chunk',
-    category: 'cookies',
-    description: 'Fudgy cocoa dough folded with milk and dark chocolate chunks.',
-    price: '$4.00',
-    priceNote: 'each',
-    image: unsplash('photo-1481391319762-47dff72954d9', 800),
-    alt: 'Freshly baked chocolate cookies',
-  },
-  // Cake pops
-  {
-    id: 'red-velvet-pop',
-    name: 'Classic Red Velvet Pop',
-    category: 'cake-pops',
-    description: 'Cream cheese center dipped in a white chocolate shell.',
-    price: '$4.25',
-    priceNote: 'each',
-    image: unsplash('photo-1587314168485-3236d6710814', 800),
-    alt: 'Chocolate cake pops on a serving tray',
-  },
-  {
-    id: 'vanilla-sprinkle-pop',
-    name: 'Vanilla Sprinkle Pop',
-    category: 'cake-pops',
-    description: 'Vanilla bean cake pop with a pastel sprinkle shell.',
-    price: '$4.00',
-    priceNote: 'each',
-    image: unsplash('photo-1590080874088-eec64895b423', 800),
-    alt: 'Round baked treats dusted with sugar',
-  },
-  // Custom cakes
-  {
-    id: 'celebration-cake',
-    name: 'Signature Celebration Cake',
-    category: 'cakes',
-    description: 'Your flavors, your story. Custom tiers from 6 to 10 inches.',
-    price: 'From $85',
-    priceNote: 'per cake',
-    image: unsplash('photo-1542124948-dc391252a940', 800),
-    alt: 'An elegant layered celebration cake',
-  },
-  {
-    id: 'naked-drip-cake',
-    name: 'Naked Drip Cake',
-    category: 'cakes',
-    description: 'Exposed layers, a glossy chocolate drip, and fresh seasonal berries.',
-    price: 'From $95',
-    priceNote: 'per cake',
-    image: unsplash('photo-1587668178277-295251f900ce', 800),
-    alt: 'A naked cake with chocolate drip and berries',
-  },
-  {
-    id: 'wedding-cake',
-    name: 'Tiered Wedding Cake',
-    category: 'cakes',
-    description: 'Elegant stacked tiers designed around your big day.',
-    price: 'From $240',
-    priceNote: 'per cake',
-    image: unsplash('photo-1519869325930-281384150729', 800),
-    alt: 'A tiered wedding cake',
-  },
-];
+const serviceMedia = {
+  cakes: { image: '/media/07a-coquet-1.jpg', alt: 'Custom cake with pink ribbon details' },
+  cupcakes: { image: '/media/06-valentines-cupcakes.jpg', alt: 'Decorated cupcakes with pink and red buttercream' },
+  events: { image: '/media/05a-strawberries-1.jpg', alt: 'Chocolate-covered strawberries arranged in a gift box' },
+  consultations: { image: '/media/11-baking-vlog-poster.jpg', alt: 'Behind-the-scenes baking moment' },
+};
 
-export const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'cupcakes', label: 'Cupcakes' },
-  { id: 'cookies', label: 'Cookies' },
-  { id: 'cake-pops', label: 'Cake Pops' },
-  { id: 'cakes', label: 'Custom Cakes' },
-];
-
-export const testimonials = [
-  {
-    quote:
-      'Leanna made our wedding cake and it was the most beautiful, delicious thing at the reception. Guests are still talking about it.',
-    name: 'Rachel M.',
-    context: 'Wedding, June 2024',
-  },
-  {
-    quote:
-      'The red velvet cupcakes were gone in minutes. Fluffy, rich, and the cream cheese frosting is unreal.',
-    name: 'Danielle P.',
-    context: 'Birthday order',
-  },
-  {
-    quote:
-      'Ordered custom cookies for our baby shower and they looked too pretty to eat. Then we ate every single one.',
-    name: 'Maya R.',
-    context: 'Cookie order',
-  },
-];
+export const services = {
+  en: [
+    {
+      slug: 'custom-cakes', title: 'Custom Cake Orders', cardTitle: 'Custom cakes',
+      summary: 'Delight in a cake that tells your story with every bite.',
+      body: ['Every custom cake is a canvas for your special moments, crafted thoughtfully to reflect your vision and tastes.', 'This service is for celebrations that deserve meaningful details—whether a wedding, birthday, religious celebration, or unique themed event.'],
+      idealFor: ['Weddings and anniversaries', 'Birthdays and milestones', 'Religious celebrations', 'Unique themed events'],
+      steps: ['Share your vision and preferences', 'Collaborate on design and flavors', 'Receive your handcrafted cake with care'], ...serviceMedia.cakes,
+    },
+    {
+      slug: 'cupcakes', title: 'Cupcake Creations', cardTitle: 'Cupcake creations',
+      summary: 'Savor individually crafted cupcakes that bring joy to every occasion.',
+      body: ['Each cupcake is baked with intention and decorated to reflect your event’s essence, turning simple treats into memorable delights.', 'Choose this service for charming, personalized sweets for gatherings, gifts, or simply sharing joy.'],
+      idealFor: ['Baby showers and baptisms', 'Office celebrations', 'Gift boxes', 'Casual get-togethers'],
+      steps: ['Discuss your event and flavor preferences', 'Choose your custom decorations', 'Enjoy freshly made cupcakes with care'], ...serviceMedia.cupcakes,
+    },
+    {
+      slug: 'event-desserts', title: 'Special Event Desserts', cardTitle: 'Event desserts',
+      summary: 'Elevate your gathering with desserts tailored to your occasion.',
+      body: ['From intimate dinners to larger celebrations, desserts are designed to complement your event’s tone and theme.', 'Each creation is inspired by your story and made with care to add sweetness and warmth.'],
+      idealFor: ['Holiday celebrations', 'Religious gatherings', 'Corporate events', 'Family reunions'],
+      steps: ['Share your event details and preferences', 'Collaborate on dessert selections', 'Receive desserts ready to delight guests'], ...serviceMedia.events,
+    },
+    {
+      slug: 'baking-consultations', title: 'Personalized Baking Consultations', cardTitle: 'Baking consultations',
+      summary: 'Gain confidence and inspiration with one-on-one baking guidance.',
+      body: ['These consultations support your baking journey and adapt to your goals and questions.', 'Lea offers encouragement rooted in experience and faith, creating a nurturing space for learning.'],
+      idealFor: ['Aspiring home bakers', 'Custom recipe advice', 'Baking enthusiasts', 'Faith-inspired encouragement'],
+      steps: ['Identify your goals and challenges', 'Schedule a personalized session', 'Receive tailored advice and encouragement'], ...serviceMedia.consultations,
+    },
+  ],
+  es: [
+    {
+      slug: 'custom-cakes', title: 'Pedidos de Pasteles Personalizados', cardTitle: 'Pasteles personalizados',
+      summary: 'Disfruta de un pastel que cuenta tu historia en cada bocado.',
+      body: ['Cada pastel personalizado es un lienzo para tus momentos especiales, elaborado cuidadosamente para reflejar tu visión y tus gustos.', 'Este servicio es ideal para celebraciones con detalles significativos: bodas, cumpleaños, celebraciones religiosas o eventos temáticos.'],
+      idealFor: ['Bodas y aniversarios', 'Cumpleaños y logros personales', 'Celebraciones religiosas', 'Eventos temáticos'],
+      steps: ['Comparte tu visión y preferencias', 'Colabora en el diseño y los sabores', 'Recibe tu pastel artesanal con cuidado'], ...serviceMedia.cakes,
+    },
+    {
+      slug: 'cupcakes', title: 'Creaciones de Cupcakes', cardTitle: 'Creaciones de cupcakes',
+      summary: 'Disfruta cupcakes elaborados individualmente para cada ocasión.',
+      body: ['Cada cupcake se hornea con intención y se decora para reflejar la esencia de tu evento, convirtiendo simples dulces en recuerdos memorables.', 'Es una opción perfecta para reuniones, regalos o simplemente para compartir alegría.'],
+      idealFor: ['Baby showers y bautizos', 'Celebraciones de oficina', 'Cajas de regalo', 'Reuniones informales'],
+      steps: ['Habla sobre tu evento y los sabores', 'Elige tus decoraciones personalizadas', 'Disfruta cupcakes recién hechos con cuidado'], ...serviceMedia.cupcakes,
+    },
+    {
+      slug: 'event-desserts', title: 'Postres para Eventos Especiales', cardTitle: 'Postres para eventos',
+      summary: 'Eleva tus reuniones con postres adaptados a tu ocasión.',
+      body: ['Desde cenas íntimas hasta celebraciones grandes, los postres se diseñan para complementar el tono y el tema de tu evento.', 'Cada creación se inspira en tu historia y se prepara con cuidado para añadir dulzura y calidez.'],
+      idealFor: ['Celebraciones festivas', 'Reuniones religiosas', 'Eventos corporativos', 'Reuniones familiares'],
+      steps: ['Comparte los detalles de tu evento', 'Colabora en la selección de postres', 'Recibe tus postres listos para deleitar'], ...serviceMedia.events,
+    },
+    {
+      slug: 'baking-consultations', title: 'Consultas Personalizadas de Repostería', cardTitle: 'Consultas de repostería',
+      summary: 'Gana confianza e inspiración con orientación personalizada.',
+      body: ['Estas consultas apoyan tu camino en la repostería y se adaptan a tus metas y preguntas.', 'Lea ofrece motivación basada en experiencia y fe, creando un espacio acogedor para aprender.'],
+      idealFor: ['Reposteros caseros aspirantes', 'Consejos personalizados de recetas', 'Entusiastas de la repostería', 'Motivación inspirada en la fe'],
+      steps: ['Identifica tus metas y desafíos', 'Programa una sesión personalizada', 'Recibe consejos y motivación adaptados'], ...serviceMedia.consultations,
+    },
+  ],
+};
 
 export const galleryItems = [
-  { image: unsplash('photo-1519869325930-281384150729', 800), category: 'weddings', alt: 'Elegant tiered wedding cake' },
-  { image: unsplash('photo-1464349095431-e9a21285b5f3', 800), category: 'birthdays', alt: 'Birthday cake with lit candles' },
-  { image: unsplash('photo-1535141192574-5d4897c12636', 800), category: 'holiday', alt: 'Festive holiday cake' },
-  { image: unsplash('photo-1542124948-dc391252a940', 800), category: 'weddings', alt: 'Refined wedding celebration cake' },
-  { image: unsplash('photo-1562440499-64c9a111f713', 800), category: 'birthdays', alt: 'Colorful birthday cake' },
-  { image: unsplash('photo-1587668178277-295251f900ce', 800), category: 'holiday', alt: 'Chocolate drip cake for the holidays' },
-  { image: unsplash('photo-1571115177098-24ec42ed204d', 800), category: 'weddings', alt: 'Detailed wedding cake decoration' },
-  { image: unsplash('photo-1576618148400-f54bed99fcfd', 800), category: 'birthdays', alt: 'Cupcakes for a birthday party' },
-  { image: unsplash('photo-1578985545062-69928b1d9587', 800), category: 'holiday', alt: 'Rich chocolate layer cake' },
-  { image: unsplash('photo-1612203985729-70726954388c', 800), category: 'weddings', alt: 'Minimalist wedding cake' },
-  { image: unsplash('photo-1558929996-da64ba858215', 800), category: 'birthdays', alt: 'Celebration cake with frosting' },
-  { image: unsplash('photo-1509440159596-0249088772ff', 800), category: 'holiday', alt: 'Rustic baked goods for a holiday table' },
+  { kind: 'image', category: 'cakes', image: '/media/07a-coquet-1.jpg', alt: 'Custom cake with pink ribbons and hearts' },
+  { kind: 'image', category: 'cakes', image: '/media/07b-coquet-2.jpg', alt: 'Close view of a custom cake with pink ribbons' },
+  { kind: 'image', category: 'cupcakes', image: '/media/04a-cake-1.jpg', alt: 'Blue buttercream cupcakes in a gift box' },
+  { kind: 'image', category: 'cupcakes', image: '/media/04b-cake-2.jpg', alt: 'Blue rosette cupcakes in a gift box' },
+  { kind: 'image', category: 'cupcakes', image: '/media/04c-cake-3.jpg', alt: 'Blue and white decorated cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/06-valentines-cupcakes.jpg', alt: 'Pink and red flower cupcakes' },
+  { kind: 'image', category: 'strawberries', image: '/media/05a-strawberries-1.jpg', alt: 'Pink chocolate-covered strawberries in a gift box' },
+  { kind: 'image', category: 'strawberries', image: '/media/05b-strawberries-2.jpg', alt: 'Pink and white chocolate-covered strawberries' },
+  { kind: 'image', category: 'strawberries', image: '/media/05c-strawberries-3.jpg', alt: 'Chocolate-covered strawberries with sprinkles' },
+  { kind: 'image', category: 'strawberries', image: '/media/05d-strawberries-4.jpg', alt: 'Blue and white chocolate-covered strawberries' },
+  { kind: 'image', category: 'strawberries', image: '/media/08a-hearts-1.jpg', alt: 'Gift box of decorated strawberries tied with ribbon' },
+  { kind: 'image', category: 'strawberries', image: '/media/08b-hearts-2.jpg', alt: 'White and pink chocolate-covered strawberries' },
+  { kind: 'video', category: 'videos', image: '/media/11-baking-vlog.mp4', poster: '/media/11-baking-vlog-poster.jpg', alt: 'Baking vlog from Lea’s kitchen' },
+  { kind: 'video', category: 'videos', image: '/media/12-christmas-bake-sale.mp4', poster: '/media/12-christmas-bake-sale-poster.jpg', alt: 'Christmas bake sale video' },
 ];
 
-export const processSteps = [
-  {
-    title: 'Mix',
-    description: 'Real butter, organic eggs, and Belgian chocolate creamed to order.',
-    image: unsplash('photo-1595475207225-428b62bda831', 800),
-    alt: 'Mixing batter by hand',
-  },
-  {
-    title: 'Bake',
-    description: 'Small batches baked slowly for a tender, even crumb.',
-    image: unsplash('photo-1509440159596-0249088772ff', 800),
-    alt: 'Golden loaves and bakes fresh from the oven',
-  },
-  {
-    title: 'Frost',
-    description: 'Silky buttercream whipped and piped by hand.',
-    image: unsplash('photo-1608198093002-ad4e005484ec', 800),
-    alt: 'Piping buttercream onto a cake',
-  },
-  {
-    title: 'Decorate',
-    description: 'Finishing touches that turn a cake into a centerpiece.',
-    image: unsplash('photo-1550617931-e17a7b70dce2', 800),
-    alt: 'Decorating a frosted cupcake',
-  },
-];
+export const galleryFilters = {
+  en: [{ id: 'all', label: 'All' }, { id: 'cakes', label: 'Cakes' }, { id: 'cupcakes', label: 'Cupcakes' }, { id: 'strawberries', label: 'Strawberries' }, { id: 'videos', label: 'Videos' }],
+  es: [{ id: 'all', label: 'Todo' }, { id: 'cakes', label: 'Pasteles' }, { id: 'cupcakes', label: 'Cupcakes' }, { id: 'strawberries', label: 'Fresas' }, { id: 'videos', label: 'Videos' }],
+};
 
-export const ingredients = [
-  {
-    title: 'Organic Eggs',
-    description: 'Farm-fresh and cage-free, for a rich, tender crumb in every bake.',
+export const contactCopy = {
+  en: {
+    eyebrow: 'Order & contact', title: 'Let’s plan your dessert', intro: 'Tell Lea what you are dreaming up and she will help you choose the sweetest next step.',
+    name: 'Name', email: 'Email', phone: 'Phone', date: 'Event date', message: 'Tell me about your dessert',
+    messagePlaceholder: 'For example: cupcakes for a birthday, or a custom cake for a June celebration.', submit: 'Continue to WhatsApp', helper: 'Optional, for quick order details.', dateHelper: 'Your event or pickup date, if you have one.', required: 'Please complete this field.', emailError: 'Please enter a valid email address.', whatsappNote: 'Your message will open in WhatsApp so Lea can reply directly.', contactTitle: 'Get in touch', emailLabel: 'Email', phoneLabel: 'Phone / WhatsApp', instagramLabel: 'Instagram',
   },
-  {
-    title: 'Real Butter',
-    description: 'Slow-churned and full fat. Never shortening, never a mix.',
+  es: {
+    eyebrow: 'Pedido y contacto', title: 'Planifiquemos tu postre', intro: 'Cuéntale a Lea lo que imaginas y ella te ayudará a elegir el siguiente paso más dulce.',
+    name: 'Nombre', email: 'Correo electrónico', phone: 'Teléfono', date: 'Fecha del evento', message: 'Cuéntame sobre tu postre',
+    messagePlaceholder: 'Por ejemplo: cupcakes para un cumpleaños o un pastel personalizado para una celebración en junio.', submit: 'Continuar a WhatsApp', helper: 'Opcional, para confirmar detalles rápidamente.', dateHelper: 'La fecha de tu evento o recogida, si la tienes.', required: 'Completa este campo.', emailError: 'Escribe un correo electrónico válido.', whatsappNote: 'Tu mensaje se abrirá en WhatsApp para que Lea pueda responderte directamente.', contactTitle: 'Ponte en contacto', emailLabel: 'Correo electrónico', phoneLabel: 'Teléfono / WhatsApp', instagramLabel: 'Instagram',
   },
-  {
-    title: 'Belgian Chocolate',
-    description: 'Single-origin couverture melted into cakes, cookies, and glazes.',
-  },
-];
+};

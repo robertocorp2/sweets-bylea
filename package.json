@@ -1,9 +1,9 @@
 {
-  "name": "leanna-corporan-bakehouse",
+  "name": "sweets-bylea",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Premium multi-page website for Leanna Corporan's Bakehouse.",
+  "description": "Bilingual SweetsByLea bakery website with local media and WhatsApp ordering.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

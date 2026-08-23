@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { copy, galleryItems, media, services, site } from '../../data/site';
+
+const t = copy.es;
+const galleryPreview = galleryItems.filter((item) => item.kind === 'image').slice(0, 6);
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Bakery', name: site.name, description: t.heroBody, url: `${site.siteUrl}/es/`, image: `${site.siteUrl}${media.hero}`, telephone: site.phone, email: site.email, sameAs: [site.instagram, site.whatsapp] };
+---
+
+<BaseLayout locale="es" alternatePath="/es/" title={`${site.name} | ${site.taglineEs}`} description={t.heroBody}>
+  <section class="hero"><div class="hero-media"><img src={media.hero} alt={media.heroAlt} fetchpriority="high" /></div><div class="hero-scrim" aria-hidden="true"></div><div class="container"><div class="hero-content"><span class="eyebrow">{t.heroEyebrow}</span><h1 class="hero-title">{t.heroTitle[0]} <span class="script">{t.heroTitle[1]}</span><br />Hecho por Lea.</h1><p class="hero-sub">{t.heroBody}</p><div class="hero-cta"><a href="/es/contact/" class="btn btn-primary">{t.order}</a><a href="/es/services/" class="btn btn-secondary">{t.explore}</a></div></div></div></section>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">{[...t.marquee, ...t.marquee].map((item) => <span>{item}</span>)}</div></div>
+  <section class="section"><div class="container story-grid"><div class="story-media reveal"><video src="/media/11-baking-vlog.mp4" poster={media.story} muted loop playsinline controls preload="metadata" aria-label={media.storyAlt}></video></div><div class="story-body reveal"><span class="eyebrow">{t.aboutEyebrow}</span><h2>{t.aboutTitle}</h2>{t.aboutBody.map((paragraph) => <p>{paragraph}</p>)}<div class="story-meta"><Icon name="heart" size={20} /> {site.taglineEs}</div><a href="/es/about/" class="btn-arrow">{t.aboutLink} <Icon name="arrow-right" size={18} /></a></div></div></section>
+  <section class="section best-sellers"><div class="container"><div class="section-head"><span class="eyebrow">{t.servicesEyebrow}</span><h2>{t.servicesTitle}</h2><p class="lede">{t.servicesBody}</p></div><div class="best-sellers-grid">{services.es.map((service) => <article class="product-card reveal"><div class="product-media"><img src={service.image} alt={service.alt} loading="lazy" /></div><div class="product-info"><span class="tag">{service.cardTitle}</span><h3>{service.title}</h3><p>{service.summary}</p><div class="product-row"><a href={`/es/services/${service.slug}/`} class="btn-arrow">Conocer más <Icon name="arrow-right" size={18} /></a></div></div></article>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="section-head center"><span class="eyebrow">{t.mediaEyebrow}</span><h2>{t.mediaTitle}</h2><p class="lede" style="margin-inline:auto;text-align:center;">{t.mediaBody}</p></div><div class="insta-grid">{galleryPreview.map((item) => <a class="insta-item" href="/es/gallery/" aria-label="Ver la galería"><img src={item.image} alt={item.alt} loading="lazy" /><span class="insta-icon"><Icon name="arrow-right" size={28} /></span></a>)}</div><div class="center-link"><a href="/es/gallery/" class="btn-arrow">{t.galleryLink} <Icon name="arrow-right" size={18} /></a></div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">{t.ctaEyebrow}</span><h2>{t.ctaTitle}</h2><p>{t.ctaBody}</p><a href="/es/contact/" class="btn btn-primary">{t.contactLink}</a></div></div></section>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>

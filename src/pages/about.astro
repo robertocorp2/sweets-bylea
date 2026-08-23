@@ -1,120 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-import { ingredients, media, processSteps, site } from '../data/site';
+import { copy, media, site } from '../data/site';
 
-const ingredientIcons = ['egg', 'butter', 'chocolate'];
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: `About ${site.name}`,
-  mainEntity: {
-    '@type': 'Person',
-    name: site.shortName,
-    jobTitle: 'Baker & Owner',
-    worksFor: { '@type': 'Bakery', name: site.name },
-  },
-};
+const t = copy.en;
+const process = [
+  { title: 'Imagine', body: 'Share the occasion, colors, flavors, and details that matter to you.', image: '/media/08a-hearts-1.jpg', alt: 'Gift box of decorated strawberries tied with ribbon' },
+  { title: 'Create', body: 'Lea brings the idea together with thoughtful details and a personal touch.', image: '/media/07b-coquet-2.jpg', alt: 'Close view of a custom cake with pink ribbons' },
+  { title: 'Celebrate', body: 'Enjoy a sweet centerpiece made to bring joy to your people.', image: '/media/05c-strawberries-3.jpg', alt: 'Chocolate-covered strawberries with sprinkles' },
+];
 ---
 
-<BaseLayout
-  title={`About Leanna | ${site.shortName}'s Bakehouse`}
-  description="Meet Leanna Corporan, the baker behind the bakehouse. A story of family recipes, real ingredients, and cakes made with love."
->
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">The baker behind the bakehouse</span>
-      <h1>About Leanna</h1>
-      <p>
-        A kitchen story about family recipes, real ingredients, and desserts made
-        from scratch.
-      </p>
-    </div>
-  </section>
-
-  <!-- the why -->
-  <section class="section">
-    <div class="container about-grid">
-      <div class="media reveal">
-        <img src={media.story} alt={media.storyAlt} loading="lazy" />
-      </div>
-      <div class="about-copy reveal">
-        <span class="eyebrow">The why</span>
-        <h2>It started with her <span class="script">grandmother's</span> recipes</h2>
-        <p>
-          Inspired by her grandmother's handwritten recipe cards, Leanna started
-          baking as a way to feel close to home. During the quiet of 2020, that
-          comfort became a calling, and a small batch of cupcakes for neighbors
-          turned into a waitlist.
-        </p>
-        <p>
-          Today she bakes bespoke cakes, cookies, and cake pops for weddings,
-          birthdays, and every milestone in between. Every order is still mixed,
-          baked, and finished by hand, exactly the way she was taught.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ingredients -->
-  <section class="section ingredients">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">The ingredients</span>
-        <h2>Only the good stuff</h2>
-      </div>
-      <div class="ingredients-grid">
-        {
-          ingredients.map((ing, i) => (
-            <div class="ingredient-card reveal">
-              <span class="ingredient-icon">
-                <Icon name={ingredientIcons[i]} size={24} />
-              </span>
-              <h3>{ing.title}</h3>
-              <p>{ing.description}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- process -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">The process</span>
-        <h2>From batter to masterpiece</h2>
-      </div>
-      <div class="process-grid">
-        {
-          processSteps.map((step, i) => (
-            <div class="process-step reveal">
-              <div class="media">
-                <img src={step.image} alt={step.alt} loading="lazy" />
-              </div>
-              <span class="num">0{i + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- cta -->
-  <section class="section-tight">
-    <div class="container">
-      <div class="cta-banner reveal">
-        <span class="script" style="font-size: 2rem;">Taste the difference</span>
-        <h2>Place your order today</h2>
-        <p>Real ingredients, made to order, and finished by hand.</p>
-        <a href="/contact/" class="btn btn-primary">Order Now</a>
-      </div>
-    </div>
-  </section>
-
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+<BaseLayout locale="en" alternatePath="/about/" title={`About | ${site.name}`} description="Meet Lea, the baker behind SweetsByLea, where faith, care, and handcrafted desserts come together.">
+  <section class="page-hero"><div class="container"><span class="eyebrow">The heart behind the sweets</span><h1>About Lea</h1><p>Faith, creativity, and a whole lot of love in every detail.</p></div></section>
+  <section class="section"><div class="container about-grid"><div class="media reveal"><video src="/media/11-baking-vlog.mp4" poster={media.story} muted loop playsinline controls preload="metadata" aria-label={media.storyAlt}></video></div><div class="about-copy reveal"><span class="eyebrow">{t.aboutEyebrow}</span><h2>{t.aboutTitle}</h2>{t.aboutBody.map((paragraph) => <p>{paragraph}</p>)}<p>SweetsByLea is a place for custom orders, special event desserts, and one-on-one baking encouragement rooted in faith.</p><div class="story-meta"><Icon name="heart" size={20} /> {site.tagline}</div></div></div></section>
+  <section class="section ingredients"><div class="container"><div class="section-head"><span class="eyebrow">The SweetsByLea way</span><h2>Made with intention.</h2></div><div class="ingredients-grid"><div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="heart" size={24} /></span><h3>Made with love</h3><p>Each creation is prepared with care for the people and moments it is meant to celebrate.</p></div><div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="sparkle" size={24} /></span><h3>Personal details</h3><p>Your colors, theme, flavors, and story help shape a dessert that feels truly yours.</p></div><div class="ingredient-card reveal"><span class="ingredient-icon"><Icon name="leaf" size={24} /></span><h3>Inspired by faith</h3><p>Lea’s Christian faith guides the encouragement and warmth behind the business.</p></div></div></div></section>
+  <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">The process</span><h2>From idea to celebration.</h2></div><div class="process-grid">{process.map((step, index) => <div class="process-step reveal"><div class="media"><img src={step.image} alt={step.alt} loading="lazy" /></div><span class="num">0{index + 1}</span><h3>{step.title}</h3><p>{step.body}</p></div>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">Taste the difference</span><h2>Let’s make your moment sweet.</h2><p>Share your vision and Lea will help bring it to life.</p><a href="/contact/" class="btn btn-primary">Start an order</a></div></div></section>
 </BaseLayout>

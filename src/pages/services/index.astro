@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { services, site } from '../../data/site';
+
+const items = services.en;
+---
+
+<BaseLayout locale="en" alternatePath="/services/" title={`Services | ${site.name}`} description="Explore SweetsByLea custom cakes, cupcakes, event desserts, and personalized baking consultations.">
+  <section class="page-hero"><div class="container"><span class="eyebrow">Made for your moment</span><h1>Sweet ways to celebrate</h1><p>Choose a service and let’s create something meaningful together.</p></div></section>
+  <section class="section-tight"><div class="container"><div class="product-grid service-grid">{items.map((service) => <article class="product-card reveal"><div class="product-media"><img src={service.image} alt={service.alt} loading="lazy" /></div><div class="product-info"><span class="tag">{service.cardTitle}</span><h3>{service.title}</h3><p>{service.summary}</p><a href={`/services/${service.slug}/`} class="btn-arrow">Explore this service <Icon name="arrow-right" size={18} /></a></div></article>)}</div></div></section>
+  <section class="section-tight"><div class="container"><div class="cta-banner reveal"><span class="script" style="font-size: 2rem;">Have something special in mind?</span><h2>Tell Lea what you’re dreaming up.</h2><p>Every order starts with a conversation.</p><a href="/contact/" class="btn btn-primary">Start an order</a></div></div></section>
+</BaseLayout>
