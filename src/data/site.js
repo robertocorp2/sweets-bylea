@@ -46,8 +46,8 @@ export const nav = {
 };
 
 export const media = {
-  hero: '/media/07a-coquet-1.jpg',
-  heroAlt: 'Custom celebration cake decorated with pink ribbons and hearts',
+  hero: '/media/hero-portfolio.jpg',
+  heroAlt: 'A ribbon cake surrounded by Lea’s floral cupcakes and chocolate-covered strawberries',
   story: '/media/11-baking-vlog-poster.jpg',
   storyAlt: 'A glimpse into Lea’s baking vlog',
   logo: site.logo,
