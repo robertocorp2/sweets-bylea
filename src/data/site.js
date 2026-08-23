@@ -113,10 +113,10 @@ export const copy = {
 };
 
 const serviceMedia = {
-  cakes: { image: '/media/07a-coquet-1.jpg', alt: 'Custom cake with pink ribbon details' },
-  cupcakes: { image: '/media/06-valentines-cupcakes.jpg', alt: 'Decorated cupcakes with pink and red buttercream' },
-  events: { image: '/media/05a-strawberries-1.jpg', alt: 'Chocolate-covered strawberries arranged in a gift box' },
-  consultations: { image: '/media/11-baking-vlog-poster.jpg', alt: 'Behind-the-scenes baking moment' },
+  cakes: { image: '/media/new-cake-two-tier.jpg', alt: 'Two-tier celebration cake with piped buttercream' },
+  cupcakes: { image: '/media/new-cupcakes-blue-cream.jpg', alt: 'Blue and cream decorated cupcakes in a gift box' },
+  events: { image: '/media/new-strawberries-chocolate-tray.jpg', alt: 'Chocolate-covered strawberries prepared for gifting' },
+  consultations: { image: '/media/new-cake-ribbon-poster.jpg', alt: 'Ribbon cake from Lea’s baking video' },
 };
 
 export const services = {
@@ -183,6 +183,28 @@ export const services = {
 };
 
 export const galleryItems = [
+  { kind: 'image', category: 'cakes', image: '/media/new-cake-two-tier.jpg', alt: 'Two-tier celebration cake with piped buttercream' },
+  { kind: 'image', category: 'cakes', image: '/media/new-cake-number-three.jpg', alt: 'Colorful number three cake decorated with buttercream flowers' },
+  { kind: 'image', category: 'cakes', image: '/media/new-cake-blue-heart.jpg', alt: 'Small blue heart-shaped cake with piped lettering' },
+  { kind: 'image', category: 'cakes', image: '/media/new-cake-peach-display.jpg', alt: 'Peach-toned celebration cake on display' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-orange-pink.jpg', alt: 'Orange and pink buttercream cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-orange-yellow.jpg', alt: 'Orange and yellow floral cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-pink-orange.jpg', alt: 'Pink and orange swirled cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-chocolate-floral.jpg', alt: 'Chocolate and pink floral cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-orange-swirl.jpg', alt: 'Orange and coral decorated cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-halloween.jpg', alt: 'Playful Halloween-themed chocolate cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-caramel.jpg', alt: 'Caramel-toned cupcakes with delicate buttercream piping' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-blue-cream-box.jpg', alt: 'Blue and cream cupcakes arranged in a gift box' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-blue-cream-close.jpg', alt: 'Close view of blue and cream decorated cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-orange-gold.jpg', alt: 'Orange and golden buttercream cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-pink-gold.jpg', alt: 'Pink and golden floral cupcakes' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-white.jpg', alt: 'White buttercream cupcakes arranged in a box' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-blue-cream-detail.jpg', alt: 'Blue and cream cupcake detail with piped flowers' },
+  { kind: 'image', category: 'cupcakes', image: '/media/new-cupcakes-blue-cream.jpg', alt: 'Blue and cream cupcake assortment' },
+  { kind: 'image', category: 'strawberries', image: '/media/new-strawberries-chocolate-tray.jpg', alt: 'Chocolate-covered strawberries prepared on a tray' },
+  { kind: 'image', category: 'strawberries', image: '/media/new-strawberries-white-red.jpg', alt: 'White and red chocolate-covered strawberries' },
+  { kind: 'video', category: 'videos', image: '/media/new-cake-ribbon.mp4', poster: '/media/new-cake-ribbon-poster.jpg', alt: 'Lea’s ribbon cake behind-the-scenes video' },
+  { kind: 'video', category: 'videos', image: '/media/new-strawberries-blue.mp4', poster: '/media/new-strawberries-blue-poster.jpg', alt: 'Lea’s blue strawberry treats behind-the-scenes video' },
   { kind: 'image', category: 'cakes', image: '/media/07a-coquet-1.jpg', alt: 'Custom cake with pink ribbons and hearts' },
   { kind: 'image', category: 'cakes', image: '/media/07b-coquet-2.jpg', alt: 'Close view of a custom cake with pink ribbons' },
   { kind: 'image', category: 'cupcakes', image: '/media/04a-cake-1.jpg', alt: 'Blue buttercream cupcakes in a gift box' },
